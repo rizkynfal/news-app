@@ -19,14 +19,14 @@ class _NewsPageState extends State<NewsPage> {
   TextEditingController searchController = TextEditingController();
   late String newsCategory = widget.newCategory.toLowerCase();
   late String urlNews =
-      "https://newsapi.org/v2/top-headlines?country=${global.country}&category=$newsCategory&apiKey=5ab5ca83d8b54fd0834c101fc1262ef8";
+      "https://newsapi.org/v2/top-headlines?country=${global.country}&category=$newsCategory&apiKey=${global.apiKey}";
   Future<NewsResponse> fetchAPI(String url) async {
     final res = await http.get(Uri.parse(url));
 
     if (res.statusCode == 200) {
       return NewsResponse.fromJson(jsonDecode(res.body));
     } else {
-      return throw const Text("failed to load news");
+      return throw Exception("failed to load news" + res.body);
     }
   }
 
@@ -34,6 +34,7 @@ class _NewsPageState extends State<NewsPage> {
   void initState() {
     super.initState();
     setState(() {
+      global.country;
       newsDetail = fetchAPI(urlNews);
     });
   }
@@ -66,7 +67,7 @@ class _NewsPageState extends State<NewsPage> {
                     setState(() {
                       global.country = element.code.toString().toLowerCase();
                       urlNews =
-                          "https://newsapi.org/v2/top-headlines?country=${global.country}&category=$newsCategory&apiKey=5ab5ca83d8b54fd0834c101fc1262ef8";
+                          "https://newsapi.org/v2/top-headlines?country=${global.country}&category=$newsCategory&apiKey=${global.apiKey}";
                       newsDetail = fetchAPI(urlNews);
                     })
                   },
@@ -93,7 +94,7 @@ class _NewsPageState extends State<NewsPage> {
               onChanged: (value) {
                 setState(() {
                   urlNews =
-                      "https://newsapi.org/v2/top-headlines?q=${searchController.text}&country=${global.country}&category=$newsCategory&apiKey=5ab5ca83d8b54fd0834c101fc1262ef8";
+                      "https://newsapi.org/v2/top-headlines?q=${searchController.text}&country=${global.country}&category=$newsCategory&apiKey=${global.apiKey}";
                   newsDetail = fetchAPI(urlNews);
                 });
               },
