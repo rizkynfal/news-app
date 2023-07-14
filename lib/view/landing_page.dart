@@ -12,22 +12,22 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   @override
-  // void initState() {
-  //   super.initState();
-  //   _landingPageTime();
-  // }
+  void initState() {
+    super.initState();
+    _landingPageTime();
+  }
 
-  // _landingPageTime() {
-  //   var duration = const Duration(seconds: 3);
-  //   return Timer(duration, navigationToDashboard);
-  // }
+  _landingPageTime() {
+    var duration = const Duration(seconds: 3);
+    return Timer(duration, navigationToDashboard);
+  }
 
-  // void navigationToDashboard() {
-  //   Navigator.pushReplacement(
-  //       context,
-  //       MaterialPageRoute(
-  //           builder: (BuildContext context) => const DashboardPage()));
-  // }
+  void navigationToDashboard() {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => const DashboardPage()));
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -13,6 +13,13 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
 
+  country_code_picker: ^3.0.0
+  http: ^1.1.0
+  webview_flutter: ^4.2.2
+  webview_flutter_android: ^3.9.0
+  webview_flutter_wkwebview: ^3.7.0
+  path_provider: ^2.0.15
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
