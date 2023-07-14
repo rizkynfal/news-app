@@ -65,8 +65,8 @@ class _NewsPageState extends State<NewsPage> {
                   onChanged: (element) => {
                     setState(() {
                       global.country = element.code.toString().toLowerCase();
-
-                      "https://newsapi.org/v2/top-headlines?country=${global.country}&category=$newsCategory&apiKey=5ab5ca83d8b54fd0834c101fc1262ef8";
+                      urlNews =
+                          "https://newsapi.org/v2/top-headlines?country=${global.country}&category=$newsCategory&apiKey=5ab5ca83d8b54fd0834c101fc1262ef8";
                       newsDetail = fetchAPI(urlNews);
                     })
                   },
@@ -92,7 +92,6 @@ class _NewsPageState extends State<NewsPage> {
               hintText: "Search News..",
               onChanged: (value) {
                 setState(() {
-                
                   urlNews =
                       "https://newsapi.org/v2/top-headlines?q=${searchController.text}&country=${global.country}&category=$newsCategory&apiKey=5ab5ca83d8b54fd0834c101fc1262ef8";
                   newsDetail = fetchAPI(urlNews);
